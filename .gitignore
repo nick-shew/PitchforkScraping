@@ -340,4 +340,4 @@ ASALocalRun/
 healthchecksdb
 
 # Test project
-PitchforkScraping.Tests/
+PitchforkScraper.Tests/
