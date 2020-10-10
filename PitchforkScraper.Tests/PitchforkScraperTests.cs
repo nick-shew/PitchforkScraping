@@ -54,20 +54,6 @@ namespace PitchforkScraping.Tests
             var isReviewed = await _pitchforkScraper.IsAlbumReviewedAsync("The Microphones", "Microphones in 2020");
             Assert.True(isReviewed);
         }
-        //[Fact]
-        //public void TryGetArtistGenre_ReturnsGenre()
-        //{
-        //    var success = _pitchforkScraper.TryGetArtistGenre("facs", out var genre);
-        //    Assert.True(success);
-        //    Assert.True(genre == "Rock");
-        //}
-        //[Fact]
-        //public void TryGetArtistGenre_ReturnsEmpty()
-        //{
-        //    var success = _pitchforkScraper.TryGetArtistGenre("The Bascinets", out var genre);
-        //    Assert.False(success);
-        //    Assert.True(genre == "");
-        //}
         [Fact]
         public async Task GetArtistInfoAsync_ReturnsArtistInfo()
         {
@@ -85,11 +71,5 @@ namespace PitchforkScraping.Tests
         {
             await Assert.ThrowsAsync<MediaNotFoundException>(async () => await _pitchforkScraper.GetArtistInfoAsync("The Bascinets"));
         }
-        //[Fact]
-        //public async Task Search_ReturnsAlbums()
-        //{
-        //    var result = await _pitchforkScraper.Search("Melkbelly","pith");
-        //    Assert.True(result.Count > 0);
-        //}
     }
 }
