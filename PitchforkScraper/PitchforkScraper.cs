@@ -79,15 +79,19 @@ namespace PitchforkScraping
             //populate album reviews for further lookup
             var reviews = new List<Review>();
             var reviewNodes = doc.DocumentNode.SelectNodes("//div[@class='review']");
-            foreach(var reviewNode in reviewNodes)
+            if(reviewNodes != null)
             {
-                reviews.Add(new Review()
+                foreach (var reviewNode in reviewNodes)
                 {
-                    Artist = artist,
-                    Album = reviewNode.SelectSingleNode(".//h2[@class='review__title-album']").InnerText,
-                    Url = "https://pitchfork.com" + reviewNode.SelectSingleNode(".//a[@class='review__link']").GetAttributeValue("href", ""),
-                });
+                    reviews.Add(new Review()
+                    {
+                        Artist = artist,
+                        Album = reviewNode.SelectSingleNode(".//h2[@class='review__title-album']").InnerText,
+                        Url = "https://pitchfork.com" + reviewNode.SelectSingleNode(".//a[@class='review__link']").GetAttributeValue("href", ""),
+                    });
+                }
             }
+            
             return new ArtistInfo()
             {
                 Artist = artist,

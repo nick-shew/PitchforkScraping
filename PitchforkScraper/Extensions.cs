@@ -15,10 +15,14 @@ namespace PitchforkScraping
                 text = doc.DocumentNode.SelectNodes(searchString).FirstOrDefault().InnerText;
                 return true;
             }
-            catch (NullReferenceException)
+            catch (Exception e)
             {
-                text = "";
-                return false;
+                if(e is NullReferenceException || e is ArgumentNullException)
+                {
+                    text = "";
+                    return false;
+                }
+                throw;
             }
         }
     }
